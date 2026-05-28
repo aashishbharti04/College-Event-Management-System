@@ -1,32 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<?php $page = 'myevents'; ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>cems</title>
-        <title></title>
-        <?php require 'utils/styles.php'; ?><!--css links. file found in utils folder-->
-        
-    </head>
-    <body>
-        <?php require 'utils/header.php'; ?><!--header content. file found in utils folder-->
+    <meta charset="UTF-8">
+    <title>My Events &mdash; CEMS</title>
+    <?php require 'utils/styles.php'; ?>
+</head>
+<body>
+<?php require 'utils/header.php'; ?>
 
-        <div class ="content"><!--body content holder-->
-            <div class = "container">
-                <div class ="col-md-6 col-md-offset-3">
-                    <form action="RegisteredEvents.php" class ="form-group" method="POST">
+<section class="page-strip">
+    <div class="container">
+        <div class="crumbs"><a href="index.php">Home</a> &nbsp;/&nbsp; My Events</div>
+        <h1>My registered events</h1>
+        <p class="text-white-50">Enter your USN to view everything you've signed up for.</p>
+    </div>
+</section>
 
-                        
-                        <div class="form-group">
-                            <label for="usn"> Student USN: </label>
-                            <input type="text"
-                                   id="usn"
-                                   name="usn"
-                                   class="form-control">
+<section class="section pt-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <div class="form-shell">
+                    <h2 class="mb-1">Find my events</h2>
+                    <p class="lead">Quick lookup &mdash; we'll list every event you've registered for.</p>
+                    <form action="RegisteredEvents.php" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Student USN</label>
+                            <input type="text" id="usn" name="usn" class="form-control" required placeholder="e.g. 1XX21CS001">
                         </div>
-                        <button type="submit" class = "btn btn-default">Login</button>
+                        <button type="submit" class="btn btn-cems w-100"><i class="bi bi-search"></i> Show my events</button>
                     </form>
+                    <p class="mt-3 mb-0 text-muted-2 small">Not registered yet? <a href="register.php"><b>Create your participant profile</b></a>.</p>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</section>
+
+<?php require 'utils/footer.php'; ?>
+</body>
 </html>

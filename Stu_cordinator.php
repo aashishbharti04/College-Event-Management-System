@@ -1,57 +1,61 @@
 <?php
+$page = 'scoord';
 include_once 'classes/db1.php';
-$result = mysqli_query($conn,"SELECT * FROM student_coordinator s ,events e where e.event_id= s.event_id");
+$rows = [];
+if (!$db_offline) {
+    $result = @mysqli_query($conn, "SELECT * FROM student_coordinator s ,events e where e.event_id= s.event_id");
+    if ($result) { while ($r = mysqli_fetch_array($result)) { $rows[] = $r; } }
+}
 ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>cems</title>
-        <title></title>
-        <?php require 'utils/styles.php'; ?><!--css links. file found in utils folder-->
-        
-    </head>
+    <meta charset="UTF-8">
+    <title>Student Coordinators &mdash; CEMS Admin</title>
+    <?php require 'utils/styles.php'; ?>
+</head>
+<body>
+<?php require 'utils/adminHeader.php'; ?>
 
-<body><?php include 'utils/adminHeader.php'?>
-<div class = "content">
-<div class = "container">
-<h1>Student Co-ordinator details</h1>
-<?php
-if (mysqli_num_rows($result) > 0) {
-?>
- <table class="table table-hover" >
-  
-  <tr>
-    <th>Name</th>
-    <th>Phone</th>
-    <th>Event</th>
-    <th></th>
-  </tr>
-<?php
-$i=0;
-while($row = mysqli_fetch_array($result)) {
-?>
-<tr>
-    <td><?php echo $row["st_name"]; ?></td>
-    <td><?php echo $row["phone"]; ?></td>
-    <td><?php echo $row["event_title"]; ?></td>
-    <td> <?php echo '<a  href="updateStudent.php?id='.$row['event_id'].'" class = "btn btn-default"> Update</a>'?></td>
-   
-</tr>
-<?php
-$i++;
-}
-?>
-</table>
- <?php
-}
-else{
-    echo "No result found";
-}
-?>
-</div>
-</div>
- </body>
- <?php include 'utils/footer.php';?>
+<section class="page-strip">
+    <div class="container">
+        <div class="crumbs"><a href="adminPage.php">Admin</a> &nbsp;/&nbsp; Student coordinators</div>
+        <h1>Student coordinators</h1>
+        <p class="text-white-50">Students leading each event &mdash; their contact and the event they own.</p>
+    </div>
+</section>
+
+<section class="section pt-0">
+    <div class="container">
+        <?php if ($db_offline) echo db_offline_banner($db_last_error); ?>
+
+        <div class="cems-table-wrap">
+            <div class="p-3" style="border-bottom:1px solid var(--border);background:var(--surface-2);">
+                <h3 class="m-0" style="font-size:1.05rem;">Student coordinators &mdash; <?php echo count($rows); ?> records</h3>
+            </div>
+            <?php if (!empty($rows)): ?>
+            <div class="table-responsive">
+                <table class="cems-table">
+                    <thead><tr><th>Name</th><th>Phone</th><th>Event</th><th></th></tr></thead>
+                    <tbody>
+                    <?php foreach ($rows as $row): ?>
+                        <tr>
+                            <td><b><?php echo htmlspecialchars($row['st_name']); ?></b></td>
+                            <td><?php echo htmlspecialchars($row['phone'] ?? '—'); ?></td>
+                            <td><?php echo htmlspecialchars($row['event_title']); ?></td>
+                            <td><a class="btn btn-cems-ghost btn-sm" href="updateStudent.php?id=<?php echo (int)$row['event_id']; ?>"><i class="bi bi-pencil"></i> Update</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php else: ?>
+                <div class="p-4 text-center text-muted-2"><i class="bi bi-inbox fs-1 d-block mb-2"></i>No coordinators yet.</div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<?php require 'utils/footer.php'; ?>
+</body>
 </html>

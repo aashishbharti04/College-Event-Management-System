@@ -1,0 +1,12 @@
+# OS / IDE
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# Local config / logs
+*.log
+*.local.php
+
+# PHP runtime
+*.cache

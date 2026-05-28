@@ -1,115 +1,125 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>cems</title>
-        <title></title>
-        <?php require 'utils/styles.php'; ?><!--css links. file found in utils folder-->
-        
-    </head>
-    <body>
-    <?php require 'utils/adminHeader.php'; ?>
-  <form method="POST">
-  
-  <div class="w3-container"> 
-  
-  <div class ="content"><!--body content holder-->
-            <div class = "container">
-                <div class ="col-md-6 col-md-offset-3">
-                <label>Event ID:</label><br>
-    <input type="number" name="event_id" required class="form-control"><br><br>
-    
-    <label>Event Name:</label><br>
-    <input type="text" name="event_title" required class="form-control"><br><br>
+<?php $page = 'newevent'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Event &mdash; CEMS Admin</title>
+    <?php require 'utils/styles.php'; ?>
+</head>
+<body>
+<?php require 'utils/adminHeader.php'; ?>
 
-    <label>Event Price:</label><br>
-    <input type="number" name="event_price" required class="form-control"><br><br>
+<section class="page-strip">
+    <div class="container">
+        <div class="crumbs"><a href="adminPage.php">Admin</a> &nbsp;/&nbsp; New event</div>
+        <h1>Create a new event</h1>
+        <p class="text-white-50">Fill in details for the event &mdash; it'll show up immediately on the public site.</p>
+    </div>
+</section>
 
-    <label>Upload Path to Image:</label><br>
-    <input type="text" name="img_link" required class="form-control"><br><br>
+<section class="section pt-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="form-shell">
+                    <form method="POST" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Event ID</label>
+                                <input type="number" name="event_id" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Event name</label>
+                                <input type="text" name="event_title" class="form-control" required placeholder="e.g. Cryptohunt 2026">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Price (₹)</label>
+                                <input type="number" name="event_price" class="form-control" required min="0">
+                            </div>
 
-    <label>Type_ID </label><br>
-    <input type="number" name="type_id" required class="form-control"><br><br>
+                            <div class="col-md-8">
+                                <label class="form-label">Image URL</label>
+                                <input type="text" name="img_link" class="form-control" required placeholder="https://images.unsplash.com/...">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Category</label>
+                                <select name="type_id" class="form-select" required>
+                                    <option value="1">1 — Technical</option>
+                                    <option value="2">2 — Gaming</option>
+                                    <option value="3">3 — On-Stage</option>
+                                    <option value="4">4 — Off-Stage</option>
+                                </select>
+                            </div>
 
-    <label>Event Date</label><br>
-    <input type="date" name="Date" required class="form-control"><br><br>
+                            <div class="col-md-4">
+                                <label class="form-label">Date</label>
+                                <input type="date" name="Date" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Time</label>
+                                <input type="text" name="time" class="form-control" required placeholder="e.g. 10:00 AM">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Location</label>
+                                <input type="text" name="location" class="form-control" required placeholder="e.g. Auditorium">
+                            </div>
 
-     <label>Event Time</label><br>
-    <input type="text" name="time" required class="form-control"><br><br>
+                            <div class="col-md-6">
+                                <label class="form-label">Staff coordinator name</label>
+                                <input type="text" name="sname" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Student coordinator name</label>
+                                <input type="text" name="st_name" class="form-control" required>
+                            </div>
 
-    <label>Event Location</label><br>
-    <input type="text" name="location" required class="form-control"><br><br>
-    <label>Staff co-ordinator name</label><br>
-    <input type="text" name="sname" required class="form-control"><br><br>
-    <label>Student co-ordinator name</label><br>
-    <input type="text" name="st_name" required class="form-control"><br><br>
+                            <div class="col-12 d-flex gap-2 flex-wrap mt-2">
+                                <button type="submit" name="update" class="btn btn-cems"><i class="bi bi-send"></i> Create event</button>
+                                <a href="adminPage.php" class="btn btn-cems-ghost"><i class="bi bi-arrow-left"></i> Back</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <button type="submit" name="update" class = "btn btn-default pull-right">Create Event <span class="glyphicon glyphicon-send"></span></button>
-
-    <a class="btn btn-default navbar-btn" href = "adminPage.php"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</a>
-
-  
-  </div></div></div>
-  </form>
-    
-
-    
-    </body>
-
-  <?php require 'utils/footer.php'; ?>
+<?php require 'utils/footer.php'; ?>
+</body>
 </html>
 
 <?php
+if (isset($_POST["update"])) {
+    $event_id    = $_POST["event_id"];
+    $event_title = $_POST["event_title"];
+    $event_price = $_POST["event_price"];
+    $img_link    = $_POST["img_link"];
+    $type_id     = $_POST["type_id"];
+    $name        = $_POST["sname"];
+    $st_name     = $_POST["st_name"];
+    $Date        = $_POST["Date"];
+    $time        = $_POST["time"];
+    $location    = $_POST["location"];
 
-  if (isset($_POST["update"]))
-  {
-  $event_id=$_POST["event_id"];
-    $event_title=$_POST["event_title"];
-    $event_price=$_POST["event_price"];
-
-    $img_link=$_POST["img_link"];
-    $type_id=$_POST["type_id"];
-    $name=$_POST["sname"];
-    $st_name=$_POST["st_name"];
-    $Date=$_POST["Date"];
-    $time=$_POST["time"];
-    $location=$_POST["location"];
-    if(!empty($event_id) || !empty($event_title) || !empty($event_price) || !empty($participents) || !empty($img_link) || !empty($type_id) )
-
-    {
-      include 'classes/db1.php';
-        
-        
-   
-        $INSERT="INSERT INTO events(event_id,event_title,event_price,img_link,type_id) VALUES($event_id,'$event_title', $event_price,'$img_link',$type_id);";
-
-            $INSERT.= "INSERT INTO event_info (event_id,Date,time,location) Values ($event_id,'$Date','$time','$location');";
-            $INSERT.="INSERT into student_coordinator(sid,st_name,phone,event_id)  values($event_id,'$st_name',NULL,$event_id);";
-            $INSERT.="INSERT into staff_coordinator(stid,name,phone,event_id)  values($event_id,'$name',NULL,$event_id)";
-
-        if($conn->multi_query($INSERT)===True){
-          echo "<script>
-          alert('Event Inserted Successfully!');
-          window.location.href='adminPage.php';
-          </script>";
+    if (!empty($event_id) && !empty($event_title) && !empty($event_price) && !empty($img_link) && !empty($type_id)) {
+        include 'classes/db1.php';
+        if ($db_offline) {
+            echo "<script>alert('Database not connected. Start MySQL and import cems.sql.'); window.location.href='createEventForm.php';</script>";
+        } else {
+            $INSERT  = "INSERT INTO events(event_id,event_title,event_price,img_link,type_id) VALUES($event_id,'$event_title', $event_price,'$img_link',$type_id);";
+            $INSERT .= "INSERT INTO event_info (event_id,Date,time,location) Values ($event_id,'$Date','$time','$location');";
+            $INSERT .= "INSERT into student_coordinator(sid,st_name,phone,event_id)  values($event_id,'$st_name',NULL,$event_id);";
+            $INSERT .= "INSERT into staff_coordinator(stid,name,phone,event_id)  values($event_id,'$name',NULL,$event_id)";
+            if ($conn->multi_query($INSERT) === True) {
+                echo "<script>alert('Event created!'); window.location.href='adminPage.php';</script>";
+            } else {
+                echo "<script>alert('Event already exists!'); window.location.href='createEventForm.php';</script>";
+            }
+            $conn->close();
         }
-        else
-        {
-          echo"<script>
-          alert('Event already exsists!');
-          window.location.href='createEventForm.php';
-          </script>";
-        }
-     
-        $conn->close();
-      
+    } else {
+        echo "<script>alert('All fields are required'); window.location.href='createEventForm.php';</script>";
     }
-    else
-    {
-      echo"<script>
-      alert('All fields are required');
-      window.location.href='createEventForm1.php';
-      </script>";
-    }
-  }
+}
 ?>

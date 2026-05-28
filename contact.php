@@ -1,46 +1,102 @@
+<?php $page = 'contact'; ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>cems</title>
-        <?php require 'utils/styles.php'; ?><!--css links. file found in utils folder-->
-        <head>
-    <body>
-        <?php require 'utils/header.php'; ?><!--header content. file found in utils folder-->
-        <div class = "content"><!--body content holder-->
-            <div class = "container">
-                <div class = "col-md-12"><!--body content title holder with 12 grid columns-->
-                    <h1 style="color:#003300 ; font-size:38px ;"><strong>Contact Us</strong></h1><!--body content title-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact &mdash; CEMS | by Aashish</title>
+    <?php require 'utils/styles.php'; ?>
+</head>
+<body>
+<?php require 'utils/header.php'; ?>
+
+<section class="page-strip">
+    <div class="container">
+        <div class="crumbs"><a href="index.php">Home</a> &nbsp;/&nbsp; Contact</div>
+        <h1>Get in touch</h1>
+        <p class="text-white-50" style="max-width:680px;">Questions about an event, partnerships, or want to deploy CEMS at your college? Reach out directly &mdash; I respond personally.</p>
+    </div>
+</section>
+
+<section class="section pt-0">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Owner contact card -->
+            <div class="col-lg-5">
+                <div class="owner-card h-100">
+                    <div class="owner-avatar">A</div>
+                    <h2 class="mb-1">Aashish</h2>
+                    <div class="kicker mb-3">Owner &middot; Developer &middot; Support</div>
+
+                    <div class="contact-row" style="background:var(--surface-2);padding:.85rem 1rem;border-radius:12px;margin:.5rem 0;display:flex;align-items:center;gap:.7rem;">
+                        <span style="width:36px;height:36px;border-radius:10px;background:rgba(42,58,122,.1);color:var(--brand-700);display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;"><i class="bi bi-envelope-fill"></i></span>
+                        <div>
+                            <div class="kicker" style="margin:0;font-size:.7rem;">Email</div>
+                            <a href="mailto:aashish@marketdoctorsonline.com"><b>aashish@marketdoctorsonline.com</b></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-row" style="background:var(--surface-2);padding:.85rem 1rem;border-radius:12px;margin:.5rem 0;display:flex;align-items:center;gap:.7rem;">
+                        <span style="width:36px;height:36px;border-radius:10px;background:rgba(245,158,11,.15);color:#b45309;display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;"><i class="bi bi-telephone-fill"></i></span>
+                        <div>
+                            <div class="kicker" style="margin:0;font-size:.7rem;">Phone &middot; WhatsApp</div>
+                            <a href="tel:+919565263445"><b>+91 95652 63445</b></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-row" style="background:var(--surface-2);padding:.85rem 1rem;border-radius:12px;margin:.5rem 0;display:flex;align-items:center;gap:.7rem;">
+                        <span style="width:36px;height:36px;border-radius:10px;background:rgba(56,217,169,.15);color:#047857;display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;"><i class="bi bi-geo-alt-fill"></i></span>
+                        <div>
+                            <div class="kicker" style="margin:0;font-size:.7rem;">Based in</div>
+                            <b>India &mdash; available remotely worldwide</b>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+                    <div class="kicker mb-2">Find me on</div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="https://github.com/aashishbharti04" target="_blank" rel="noopener" class="btn btn-cems-ghost"><i class="bi bi-github"></i> GitHub</a>
+                        <a href="https://in.linkedin.com/in/aashana1012" target="_blank" rel="noopener" class="btn btn-cems-ghost"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                        <a href="https://www.youtube.com/@CodeWithAsur" target="_blank" rel="noopener" class="btn btn-cems-ghost"><i class="bi bi-youtube"></i> YouTube</a>
+                        <a href="https://www.instagram.com/asurwave1012?igsh=ZDBlY2NtczJ5cmMw" target="_blank" rel="noopener" class="btn btn-cems-ghost"><i class="bi bi-instagram"></i> Instagram</a>
+                    </div>
                 </div>
             </div>
-			
-            <div class="container">
-            <div class="col-md-12">
-            <hr>
-            </div>
-            </div>
-            
-            <div class="container">
-                <div class="col-md-6 contacts">
-                    <h1 style="color:#000080 ; font-size:42px ; font-style:bold "><span class="glyphicon glyphicon-user"></span> College</h1>
-                    <p>
-                        <span class="glyphicon glyphicon-envelope"></span> Email: collegeevent@gmail.com<br>
-    
-                        <span class="glyphicon glyphicon-phone"></span> Mobile: 9123456789
-                    </p>
+
+            <!-- Message form (front-end only, mailto fallback) -->
+            <div class="col-lg-7">
+                <div class="form-shell h-100">
+                    <h2>Drop a message</h2>
+                    <p class="lead">Fill the form below &mdash; it'll open your mail client addressed to me with everything pre-filled.</p>
+                    <form action="mailto:aashish@marketdoctorsonline.com" method="get" enctype="text/plain">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Your name</label>
+                                <input type="text" name="name" class="form-control" required placeholder="e.g. Priya Sharma">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Your email</label>
+                                <input type="email" name="from" class="form-control" required placeholder="you@example.com">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Subject</label>
+                                <input type="text" name="subject" class="form-control" required placeholder="What's this about?">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Message</label>
+                                <textarea name="body" rows="6" class="form-control" required placeholder="Tell me a bit more..."></textarea>
+                            </div>
+                            <div class="col-12 d-flex gap-2 flex-wrap">
+                                <button type="submit" class="btn btn-cems"><i class="bi bi-send"></i> Send message</button>
+                                <a href="tel:+919565263445" class="btn btn-cems-ghost"><i class="bi bi-telephone"></i> Call instead</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-6 contacts">
-                    <h1 style="color:#000080 ; font-size:42px ; font-style:bold "><span class="glyphicon glyphicon-user"></span> Example</h1>
-                    <p>
-                        <span class="glyphicon glyphicon-envelope"></span> Email: example@gmail.com<br>
-    
-                        <span class="glyphicon glyphicon-phone"></span> Mobile: 9876543210
-                    </p>
-                </div>
             </div>
-			
-            
-        </div><!--body content div-->
-        <?php require 'utils/footer.php'; ?><!--footer content. file found in utils folder-->
-    </body>
+        </div>
+    </div>
+</section>
+
+<?php require 'utils/footer.php'; ?>
+</body>
 </html>

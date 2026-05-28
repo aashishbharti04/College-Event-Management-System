@@ -42,20 +42,20 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `event_title`, `event_price`, `participents`, `img_link`, `type_id`) VALUES
-(1, 'Cryptohunt', 100, 0, 'images/crypto.png', 1),
-(2, 'Search-it', 50, 2, 'images/cs03.jpg', 1),
-(3, 'Technical-Quiz', 50, 2, 'images/quiz.png', 1),
-(4, 'Competitive-Coding', 50, 1, 'images/coding.jpg', 1),
-(5, 'Pubg', 50, 1, 'images/pubg.jpg', 2),
-(6, 'Counter-Strike', 100, 1, 'images/counter.jpg\r\n', 2),
-(7, 'Fashion-Show', 200, 1, 'images/onstage.jpg', 3),
-(8, 'Dance', 100, 0, 'images/dance.jpg', 3),
-(9, 'Singing', 50, 0, 'images/sing.jpg', 3),
-(10, 'Svit-Idol', 100, 0, 'images/idol.jpg', 3),
-(11, 'Cooking-Without-Fire', 50, 0, 'images/cook.jpg', 4),
-(12, 'Short-Movie', 200, 0, 'images/offstage.jpg', 4),
-(13, 'Mehandi', 100, 0, 'image/mehandi.jpg', 4),
-(14, 'Rangoli', 50, 0, 'images/cs03.jpg', 4);
+(1,  'Cryptohunt',           100, 0, 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=900&q=80', 1),
+(2,  'Search-it',              50, 2, 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80', 1),
+(3,  'Technical-Quiz',         50, 2, 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=900&q=80', 1),
+(4,  'Competitive-Coding',     50, 1, 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80', 1),
+(5,  'Pubg',                   50, 1, 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80', 2),
+(6,  'Counter-Strike',        100, 1, 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80', 2),
+(7,  'Fashion-Show',          200, 1, 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=80', 3),
+(8,  'Dance',                 100, 0, 'https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=900&q=80', 3),
+(9,  'Singing',                50, 0, 'https://images.unsplash.com/photo-1499415479124-43c32433a620?auto=format&fit=crop&w=900&q=80', 3),
+(10, 'Svit-Idol',             100, 0, 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=900&q=80', 3),
+(11, 'Cooking-Without-Fire',   50, 0, 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80', 4),
+(12, 'Short-Movie',           200, 0, 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80', 4),
+(13, 'Mehandi',               100, 0, 'https://images.unsplash.com/photo-1610208440447-32a4dad94e5d?auto=format&fit=crop&w=900&q=80', 4),
+(14, 'Rangoli',                50, 0, 'https://images.unsplash.com/photo-1604423043492-41303fc645f3?auto=format&fit=crop&w=900&q=80', 4);
 
 -- --------------------------------------------------------
 

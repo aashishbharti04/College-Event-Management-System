@@ -1,44 +1,48 @@
-<title>cems</title>
-<style>
-.bgImage {
-    background-image: url(images/cs03.jpg);
-    background-size: cover;
-    background-position: center center;
-    height: 650px;
-    margin-bottom: 25px;
-}
-</style>
-<header class="bgImage" > 
-    <nav class="navbar" >
-        <div class="container">
-        <div class="navbar-header"><!--website name/title-->
-               
-                <a class = "navbar-brand">
-                   <h2>College Event Management System</h2>
-                </a>
+<?php
+// Public navigation header. $page can be set by including page for active-link highlighting.
+$page = $page ?? '';
+?>
+<div class="topbar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div>
+            <i class="bi bi-envelope-fill me-1"></i>
+            <a href="mailto:aashish@marketdoctorsonline.com">aashish@marketdoctorsonline.com</a>
+            <span class="sep">|</span>
+            <i class="bi bi-telephone-fill me-1"></i>
+            <a href="tel:+919565263445">+91 95652 63445</a>
         </div>
-       
-            <ul class="nav navbar-nav navbar-right"><!--navigation-->
-                    <li><a href = "index.php"><strong>Home</strong></a></li>
-                    <li><a href = "register.php"><strong>Register</strong></a></li>
-                    <li><a href = "contact.php"><strong>Contact Us</strong></a></li>
-                    <li><a href = "aboutus.php"><strong>About us</strong></a></li>
-                    <li class="btnlogout"><a class = "btn btn-default navbar-btn" href = "login_form.php">Login <span class = "glyphicon glyphicon-log-in"></span></a></li>
-
-            
-                
-                
-            </ul>
-        </div><!--container div-->
-    </nav>
-    <div class = "col-md-12">
-        <div class = "container">
-            <div class = "jumbotron"><!--jumbotron-->
-                <h1><strong>Explore<br></strong> Your Favorite Event</h1><!--jumbotron heading-->
-                <br><div class="browse d-md-flex col-md-14" >
-                <div class="row">
-                  
-            </div>
+        <div>
+            <a href="https://github.com/aashishbharti04" target="_blank" rel="noopener" title="GitHub"><i class="bi bi-github"></i></a>
+            <span class="sep">|</span>
+            <a href="https://in.linkedin.com/in/aashana1012" target="_blank" rel="noopener" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <span class="sep">|</span>
+            <a href="https://www.youtube.com/@CodeWithAsur" target="_blank" rel="noopener" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <span class="sep">|</span>
+            <a href="https://www.instagram.com/asurwave1012?igsh=ZDBlY2NtczJ5cmMw" target="_blank" rel="noopener" title="Instagram"><i class="bi bi-instagram"></i></a>
         </div>
     </div>
-</header>
+</div>
+<nav class="cems-nav navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand cems-brand" href="index.php">
+            <span class="logo-mark">A</span>
+            <span>CEMS
+                <small>by Aashish</small>
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cemsNav" aria-controls="cemsNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="cemsNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                <li class="nav-item"><a class="nav-link <?php echo $page==='home'?'active':''; ?>" href="index.php"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo $page==='events'?'active':''; ?>" href="index.php#events"><i class="bi bi-calendar-event me-1"></i>Events</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo $page==='register'?'active':''; ?>" href="register.php"><i class="bi bi-person-plus me-1"></i>Register</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo $page==='myevents'?'active':''; ?>" href="usn.php"><i class="bi bi-bookmark-check me-1"></i>My Events</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo $page==='about'?'active':''; ?>" href="aboutus.php"><i class="bi bi-info-circle me-1"></i>About</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo $page==='contact'?'active':''; ?>" href="contact.php"><i class="bi bi-chat-dots me-1"></i>Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-cems" href="login_form.php"><i class="bi bi-shield-lock"></i>Admin Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

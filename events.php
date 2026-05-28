@@ -1,38 +1,36 @@
-<div class="container">
-            <div class="col-md-12">
-            <hr>
+<?php
+// Legacy fragment kept for backward compatibility. New event listing logic lives in viewEvent.php.
+// This file used to be included inside a while-loop; now we just render a small inline card so old includes still work.
+if (!isset($row)) return;
+$img   = htmlspecialchars(trim($row['img_link']  ?? ''));
+$title = htmlspecialchars($row['event_title']    ?? 'Untitled');
+$price = (int)($row['event_price']               ?? 0);
+$date  = htmlspecialchars($row['Date']           ?? '');
+$time  = htmlspecialchars($row['time']           ?? '');
+$loc   = htmlspecialchars($row['location']       ?? '');
+$stuC  = htmlspecialchars($row['st_name']        ?? '');
+$stfC  = htmlspecialchars($row['name']           ?? '');
+?>
+<div class="event-card mb-4">
+    <div class="row g-0">
+        <div class="col-md-5">
+            <div class="e-img h-100" style="background-image:url('<?php echo $img; ?>'); min-height:240px;"></div>
+        </div>
+        <div class="col-md-7">
+            <div class="e-body">
+                <span class="price"><i class="bi bi-cash-coin me-1"></i>₹<?php echo $price; ?></span>
+                <h4><?php echo $title; ?></h4>
+                <div class="e-meta">
+                    <div><i class="bi bi-calendar3"></i> <?php echo $date; ?></div>
+                    <div><i class="bi bi-clock"></i> <?php echo $time; ?></div>
+                    <div><i class="bi bi-geo-alt"></i> <?php echo $loc; ?></div>
+                    <div><i class="bi bi-person"></i> Student lead: <?php echo $stuC; ?></div>
+                    <div><i class="bi bi-person-badge"></i> Staff lead: <?php echo $stfC; ?></div>
+                </div>
+                <div class="actions">
+                    <a href="register.php" class="btn btn-cems"><i class="bi bi-bookmark-plus"></i> Register</a>
+                </div>
             </div>
-
-<div class="row">
-                <section>
-                    <div class="container">
-                        <div class="col-md-6">
-                             
-
-                          <img src=" <?php  echo $row['img_link'];?>" class="img-responsive">
-                        </div>
-                        <div class="subcontent col-md-6">                        
-                            <h1 style="color:#003300 ; font-size:38px ;" ><u><strong><?php echo '<td>' . $row['event_title'] . '</td>';?></strong></u></h1><!--title-->
-                            <p style="color:#003300  ;font-size:20px "><!--content-->
-                            <?php
-                            
-                           
-                            echo 'Date:' . $row['Date'] .'<br>'; 
-                            echo 'Time:' . $row['time'] .'<br>'; 
-                            echo 'Location:' . $row['location'] .'<br>'; 
-                            echo 'Student Co-ordinator:' . $row['st_name'] .'<br>'; 
-                            echo 'Staff Co-ordinator:' . $row['name'] .'<br>'; 
-                            echo 'Event Price:' . $row['event_price'].'<br>' ;
-                    
-                        ?>
-                            </p>
-                            
-                            <br><br>
-                        <?php echo
-                             '<a class="btn btn-default" href="register.php"> <span class="glyphicon glyphicon-circle-arrow-right"></span>Register</a>'
-                            ?>
-                                                        </div><!--subcontent div-->
-                    </div><!--container div-->
-                </section>
+        </div>
+    </div>
 </div>
- </div><!--row div-->
